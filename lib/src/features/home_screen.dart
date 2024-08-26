@@ -1,14 +1,22 @@
-import 'package:fitpulse/src/common_widgets/activity_card.dart';
+import 'package:fitpulse/src/common_widgets/activities/activity_card.dart';
 import 'package:fitpulse/src/common_widgets/bottom_bar.dart';
-import 'package:fitpulse/src/common_widgets/exercise_card.dart';
+import 'package:fitpulse/src/common_widgets/activities/exercise_card.dart';
 import 'package:fitpulse/src/common_widgets/section_header.dart';
 import 'package:fitpulse/src/constants/colors.dart';
 import 'package:fitpulse/src/features/activities/activities_screen.dart';
 import 'package:fitpulse/src/features/activities/steps_detail_screen.dart';
+import 'package:fitpulse/src/features/activities/exercise_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+   HomeScreen({super.key});
+
+  List<Map<String, String>> exercises = [
+    {"title": "Flat Stomach Workout", "time": "30 Minutes", "calories": "200 Calories", "image": "assets/images/flatstomach.png"},
+    {"title": "Warming Up", "time": "30 Minutes", "calories": "200 Calories", "image": "assets/images/warmingup.png"},
+    {"title": "Walking Workout", "time": "30 Minutes", "calories": "200 Calories", "image": "assets/images/wakingworkout.png"},
+    {"title": "Lean Arm Workout", "time": "30 Minutes", "calories": "200 Calories", "image": "assets/images/leanarmworkout.png"},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -49,14 +57,14 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       backgroundColor: neutral200,
-                      radius: 25, // Adjust the radius if needed
+                      radius: 25,
                       child: Icon(
                         Icons.search,
                         size: 28,
                         color: Colors.black,
                       ),
                     ),
-                    SizedBox(width: 10), // Add spacing between the icons
+                    SizedBox(width: 10),
                     Stack(
                       children: [
                         CircleAvatar(
@@ -69,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         Positioned(
-                          top: 4, // Adjust the position of the dot
+                          top: 4,
                           right: 4,
                           child: CircleAvatar(
                             radius: 5.5,
@@ -84,7 +92,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Banner Card
+          
             Container(
               padding: const EdgeInsets.all(0),
               decoration: BoxDecoration(
@@ -98,13 +106,11 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Today Activities
-            SectionHeader(
+          
+            const SectionHeader(
               title: "Today Activities",
               isSubtitle: true,
-              onSeeAllPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const ActivitiesScreen()));
-              },
+              navigateTo: ActivitiesScreen(),
             ),
             const SizedBox(height: 10),
             const Row(
@@ -127,7 +133,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Today Nutrition
+          
             const SectionHeader(title: "Today Nutrition", isSubtitle: false),
             const SizedBox(height: 10),
             Container(
@@ -138,9 +144,9 @@ class HomeScreen extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.25),
-                    offset: const Offset(0, 0), // Offset X dan Y
-                    blurRadius: 2, // Blur radius
-                    spreadRadius: 0, // Spread radius
+                    offset: const Offset(0, 0),
+                    blurRadius: 2,
+                    spreadRadius: 0,
                   ),
                 ],
               ),
@@ -167,37 +173,23 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Exercise For You
-            const SectionHeader(title: "Exercise For You"),
+            const SectionHeader(title: "Exercise For You", isSubtitle: true, navigateTo: ExerciseScreen(),),
             const SizedBox(height: 10),
-            const ExerciseCard(
-              title: "Flat Stomach Workout",
-              time: "30 Minutes",
-              calories: "200 Calories",
-              imageAsset: "assets/images/flatstomach.png",
-            ),
-            const SizedBox(height: 10),
-            const ExerciseCard(
-              title: "Warming Up",
-              time: "30 Minutes",
-              calories: "200 Calories",
-              imageAsset: "assets/images/warmingup.png",
-            ),
-            const SizedBox(height: 10),
-            const ExerciseCard(
-              title: "Walking Workout",
-              time: "30 Minutes",
-              calories: "200 Calories",
-              imageAsset: "assets/images/wakingworkout.png",
-            ),
-            const SizedBox(height: 10),
-            const ExerciseCard(
-              title: "Lean Arm Workout",
-              time: "30 Minutes",
-              calories: "200 Calories",
-              imageAsset: "assets/images/leanarmworkout.png",
-            ),
-            const SizedBox(height: 10),
+            Column(
+              children: exercises.map((exercise) {
+                return Column(
+                  children: [
+                    ExerciseCard(
+                      title: exercise["title"]!,
+                      time: exercise["time"]!,
+                      calories: exercise["calories"]!,
+                      imageAsset: exercise["image"]!,
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                );
+              }).toList(),
+            )
           ],
         ),
       ),

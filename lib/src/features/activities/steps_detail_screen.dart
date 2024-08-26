@@ -1,6 +1,6 @@
-import 'package:fitpulse/src/common_widgets/activities_info_card.dart';
+import 'package:fitpulse/src/common_widgets/activities/activities_info_card.dart';
 import 'package:fitpulse/src/common_widgets/section_header.dart';
-import 'package:fitpulse/src/features/activities/activities_screen.dart';
+import 'package:fitpulse/src/common_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:fitpulse/src/common_widgets/bottom_bar.dart';
 import 'package:fitpulse/src/common_widgets/custom_tabs.dart';
@@ -19,29 +19,10 @@ class _StepsDetailScreenState extends State<StepsDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => ActivitiesScreen()),
-            );
-          },
-        ),
-        title: const Text(
-          'Daily Steps',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        centerTitle: true,
+      appBar: const CustomAppBar(
+        title: 'Daily Steps',
+        iconColor: Colors.black,
+        textColor: Colors.black,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 100.0),
@@ -109,8 +90,8 @@ class _StepsDetailScreenState extends State<StepsDetailScreen> {
               ),
               const SizedBox(height: 10),
               Container(
-                height: 200, // Placeholder height for the graph
-                color: Colors.grey[300], // Placeholder for the graph area
+                height: 200,
+                color: Colors.grey[300],
                 // Add your graph widget here in the future
               ),
             ],

@@ -30,7 +30,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
     switch (index) {
       case 0:
-        _fadeToScreen(context, const HomeScreen());
+        _fadeToScreen(context, HomeScreen());
         break;
       case 1:
         _fadeToScreen(context, const ActivitiesScreen());

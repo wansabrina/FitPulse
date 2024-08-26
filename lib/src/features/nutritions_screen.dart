@@ -1,4 +1,4 @@
-import 'package:fitpulse/src/common_widgets/activities_info_card.dart';
+import 'package:fitpulse/src/common_widgets/activities/activities_info_card.dart';
 import 'package:fitpulse/src/common_widgets/section_header.dart';
 import 'package:flutter/material.dart';
 import 'package:fitpulse/src/common_widgets/bottom_bar.dart';

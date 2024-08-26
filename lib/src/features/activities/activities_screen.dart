@@ -1,5 +1,5 @@
-import 'package:fitpulse/src/common_widgets/activity_card.dart';
-import 'package:fitpulse/src/common_widgets/exercise_card.dart';
+import 'package:fitpulse/src/common_widgets/activities/activity_card.dart';
+import 'package:fitpulse/src/common_widgets/activities/exercise_card.dart';
 import 'package:fitpulse/src/common_widgets/section_header.dart';
 import 'package:fitpulse/src/features/activities/steps_detail_screen.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        automaticallyImplyLeading: false, // This removes the back button
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 30.0),
@@ -117,7 +117,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                   icon: Icons.nights_stay,
                   label: "Sleep",
                   value: "8 Hours",
-                  navigateTo: StepsDetailScreen(), // Replace with the actual SleepDetailScreen
+                  navigateTo: StepsDetailScreen(),
                 ),
               ],
             ),

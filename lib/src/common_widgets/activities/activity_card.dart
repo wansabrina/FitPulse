@@ -5,23 +5,23 @@ class ActivityCard extends StatelessWidget {
   final IconData icon;
   final String label;
   final String value;
-  final Widget navigateTo; // Parameter untuk halaman tujuan
+  final Widget navigateTo;
 
   const ActivityCard({
     super.key,
     required this.icon,
     required this.label,
     required this.value,
-    required this.navigateTo, // Menambahkan parameter untuk halaman tujuan
+    required this.navigateTo,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector( // Membungkus Container dengan GestureDetector
+    return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => navigateTo), // Navigasi ke halaman tujuan
+          MaterialPageRoute(builder: (context) => navigateTo),
         );
       },
       child: Container(
@@ -33,9 +33,9 @@ class ActivityCard extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.25),
-              offset: const Offset(0, 0), // Offset X dan Y
-              blurRadius: 2, // Blur radius
-              spreadRadius: 0, // Spread radius
+              offset: const Offset(0, 0),
+              blurRadius: 2,
+              spreadRadius: 0,
             ),
           ],
         ),

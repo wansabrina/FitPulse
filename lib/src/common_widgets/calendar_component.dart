@@ -34,7 +34,7 @@ class CalendarComponent extends StatelessWidget {
                     blurRadius: 2,
                     spreadRadius: 0,
                   ),
-                ], // Rounded corners
+                ],
               ),
               child: Column(
                 children: [
