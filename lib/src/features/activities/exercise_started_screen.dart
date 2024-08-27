@@ -1,4 +1,5 @@
 import 'package:fitpulse/src/constants/colors.dart';
+import 'package:fitpulse/src/features/activities/exercise_list_card.dart';
 import 'package:flutter/material.dart';
 
 class ExerciseStarted extends StatefulWidget {
@@ -122,7 +123,7 @@ class _ExerciseStartedState extends State<ExerciseStarted> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(100),
-                      child: LinearProgressIndicator(
+                      child: const LinearProgressIndicator(
                         value: 0.3,
                         backgroundColor: Colors.transparent,
                         color: Colors.blue,
@@ -134,66 +135,59 @@ class _ExerciseStartedState extends State<ExerciseStarted> {
               ],
             ),
             const SizedBox(height: 20),
-          
+
             Expanded(
-              child: ListView.builder(
-                itemCount: exercises.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: Image.asset(
-                      imagePath,
-                      height: 40,
-                      fit: BoxFit.cover,
+              child: ListView(
+                children: [
+                  for (var i = 0; i < 8; i++)
+                    ExerciseList(
+                      exerciseName: 'Exercise ${i + 1}',
+                      duration: '0${i + 2}:30 Minutes',
+                      imagePath: 'assets/images/flatstomach.png',
                     ),
-                    title: Text(exercises[index]['title']!),
-                    subtitle: Text(exercises[index]['time']!),
-                    trailing: const Icon(Icons.play_circle_fill, color: Colors.blue),
-                  );
-                },
+                ],
               ),
             ),
           ],
         ),
       ),
 
-        bottomNavigationBar: Container(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 40.0, top: 10.0, left: 100.0, right: 100.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                FloatingActionButton(
-                  onPressed: () {
-                    // Aksi untuk tombol rewind
-                  },
-                  backgroundColor: Colors.blue[300], // Mengubah latar belakang menjadi blue300
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30), // Mengatur sudut agar tetap bulat
-                  ),
-                  child: const Icon(Icons.fast_rewind, size: 30, color: Colors.white), // Mengubah warna ikon menjadi putih
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.only(bottom: 20.0, top: 10.0, left: 100.0, right: 100.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              FloatingActionButton(
+                onPressed: () {
+                
+                },
+                backgroundColor: Colors.blue[300],
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
                 ),
-                FloatingActionButton(
-                  onPressed: () {
-                    // Aksi untuk tombol pause
-                  },
-                  backgroundColor: Colors.blue[300], // Mengubah latar belakang menjadi blue300
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30), // Mengatur sudut agar tetap bulat
-                  ),
-                  child: const Icon(Icons.pause, size: 30, color: Colors.white), // Mengubah warna ikon menjadi putih
+                child: const Icon(Icons.fast_rewind, size: 30, color: Colors.white),
+              ),
+              FloatingActionButton(
+                onPressed: () {
+                
+                },
+                backgroundColor: Colors.blue[300],
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
                 ),
-                FloatingActionButton(
-                  onPressed: () {
-                    // Aksi untuk tombol forward
-                  },
-                  backgroundColor: Colors.blue[300], // Mengubah latar belakang menjadi blue300
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30), // Mengatur sudut agar tetap bulat
-                  ),
-                  child: const Icon(Icons.fast_forward, size: 30, color: Colors.white), // Mengubah warna ikon menjadi putih
+                child: const Icon(Icons.pause, size: 30, color: Colors.white),
+              ),
+              FloatingActionButton(
+                onPressed: () {
+                
+                },
+                backgroundColor: Colors.blue[300],
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
                 ),
-              ],
-            ),
+                child: const Icon(Icons.fast_forward, size: 30, color: Colors.white),
+              ),
+            ],
           ),
         ),
     );

@@ -1,11 +1,12 @@
 import 'package:fitpulse/src/common_widgets/custom_appbar.dart';
 import 'package:fitpulse/src/common_widgets/custom_elevated_button.dart';
 import 'package:fitpulse/src/constants/colors.dart';
+import 'package:fitpulse/src/features/activities/exercise_list_card.dart';
 import 'package:fitpulse/src/features/activities/exercise_started_screen.dart';
 import 'package:flutter/material.dart';
 
 class ExerciseDetail extends StatefulWidget {
-  const ExerciseDetail({Key? key}) : super(key: key);
+  const ExerciseDetail({super.key});
 
   @override
   _ExerciseDetailState createState() => _ExerciseDetailState();
@@ -111,8 +112,8 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                     const Row(
                       children: [
                         Icon(Icons.access_time_filled, color: Colors.blue),
-                        const SizedBox(width: 8),
-                        const Text(
+                        SizedBox(width: 8),
+                        Text(
                           '30 minutes',
                           style: TextStyle(
                             fontSize: 18,
@@ -146,29 +147,19 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                     ),
                     const SizedBox(height: 7),
 
-                  
                     Expanded(
-                      child: ListView.builder(
-                        itemCount: isExpanded ? 9 : 4,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 5),
-                            child: ListTile(
-                              leading: Image.asset(
-                                'assets/images/flatstomach.png',
-                                height: 40,
-                              ),
-                              title: Text('Exercise ${index + 1}'),
-                              subtitle: Text('0${index + 2}:30 Minutes'),
-                              trailing: const Icon(
-                                Icons.play_circle_outline,
-                                color: Colors.blue,
-                              ),
+                      child: ListView(
+                        children: [
+                          for (var i = 0; i < 9; i++)
+                            ExerciseList(
+                              exerciseName: 'Exercise ${i + 1}',
+                              duration: '0${i + 2}:30 Minutes',
+                              imagePath: 'assets/images/flatstomach.png',
                             ),
-                          );
-                        },
+                        ],
                       ),
                     ),
+                    const SizedBox(height: 40),
                   ],
                 ),
               ),

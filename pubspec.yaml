@@ -84,6 +84,13 @@ flutter:
     - assets/images/Workouttt.png
     - assets/images/Yoga.png
     - assets/images/body.png
+    - assets/images/egg.png
+    - assets/images/soy.png
+    - assets/images/porridge.png
+    - assets/images/shallots.png
+    - assets/images/scallions.png
+    - assets/images/chicken.png
+    - assets/images/buburayam.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

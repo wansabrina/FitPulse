@@ -1,6 +1,7 @@
 import 'package:fitpulse/src/common_widgets/activities/activity_card.dart';
 import 'package:fitpulse/src/common_widgets/activities/exercise_card.dart';
 import 'package:fitpulse/src/common_widgets/section_header.dart';
+import 'package:fitpulse/src/features/activities/exercise_screen.dart';
 import 'package:fitpulse/src/features/activities/steps_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fitpulse/src/common_widgets/bottom_bar.dart';
@@ -91,10 +92,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            SectionHeader(
-              title: "Continue Progress",
-              isSubtitle: true,
-            ),
+            const SectionHeader(title: "Continue Progress", isSubtitle: true, navigateTo: ExerciseScreen()),
             const SizedBox(height: 10),
             const ExerciseCard(
               title: "Flat Stomach Workout",

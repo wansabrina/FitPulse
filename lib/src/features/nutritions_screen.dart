@@ -1,5 +1,6 @@
 import 'package:fitpulse/src/common_widgets/activities/activities_info_card.dart';
 import 'package:fitpulse/src/common_widgets/section_header.dart';
+import 'package:fitpulse/src/features/meal_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fitpulse/src/common_widgets/bottom_bar.dart';
 import 'package:fitpulse/src/common_widgets/calendar_component.dart';
@@ -13,6 +14,34 @@ class NutritionsScreen extends StatefulWidget {
 
 class _NutritionsScreenState extends State<NutritionsScreen> {
   int selectedDay = DateTime.now().day;
+
+
+  final List<Map<String, dynamic>> mealPlan = [
+    {
+      'title': 'Breakfast',
+      'number': 295.2,
+      'unit': 'kkal',
+      'icon': Icons.wb_sunny_outlined,
+    },
+    {
+      'title': 'Lunch',
+      'number': 350.4,
+      'unit': 'kkal',
+      'icon': Icons.sunny,
+    },
+    {
+      'title': 'Dinner',
+      'number': 400.0,
+      'unit': 'kkal',
+      'icon': Icons.nights_stay,
+    },
+    {
+      'title': 'Snack',
+      'number': 150.0,
+      'unit': 'kkal',
+      'icon': Icons.donut_small,
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +66,6 @@ class _NutritionsScreenState extends State<NutritionsScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-
             CalendarComponent(
               selectedDay: selectedDay,
               onDaySelected: (day) {
@@ -91,34 +119,23 @@ class _NutritionsScreenState extends State<NutritionsScreen> {
             const SizedBox(height: 16),
             const SectionHeader(title: "Your Meal Plan", isSubtitle: false),
             const SizedBox(height: 10),
-            const ActivitiesInfoCard(
-              title: 'Breakfast',
-              number: 295.2,
-              unit: "kkal",
-              icon: Icons.wb_sunny_outlined,
+
+            Column(
+              children: mealPlan.map((meal) {
+                return Column(
+                  children: [
+                    ActivitiesInfoCard(
+                      title: meal['title'],
+                      number: meal['number'],
+                      unit: meal['unit'],
+                      icon: meal['icon'],
+                      navigateTo: const MealPlanDetail(),
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                );
+              }).toList(),
             ),
-            const SizedBox(height: 10),
-            const ActivitiesInfoCard(
-              title: 'Breakfast',
-              number: 295.2,
-              unit: "kkal",
-              icon: Icons.wb_sunny_outlined,
-            ),
-            const SizedBox(height: 10),
-            const ActivitiesInfoCard(
-              title: 'Breakfast',
-              number: 295.2,
-              unit: "kkal",
-              icon: Icons.wb_sunny_outlined,
-            ),
-            const SizedBox(height: 10),
-            const ActivitiesInfoCard(
-              title: 'Breakfast',
-              number: 295.2,
-              unit: "kkal",
-              icon: Icons.wb_sunny_outlined,
-            ),
-            const SizedBox(height: 10),
           ],
         ),
       ),
