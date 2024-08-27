@@ -1,7 +1,3 @@
-Here’s a stylish and engaging README template for your app based on the splash screen and onboarding flow. This README includes title, cover, description, and all the essential sections, sprinkled with emojis for extra flair:
-
----
-
 # 💪 FitPulse - Your Fitness Companion 🌟
 
 ![FitPulse](./assets/images/Thumbnail.jpg)
