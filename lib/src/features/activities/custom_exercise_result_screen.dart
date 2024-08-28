@@ -1,3 +1,4 @@
+import 'package:fitpulse/src/constants/exercises_data.dart';
 import 'package:fitpulse/src/features/activities/widget/exercise_card.dart';
 import 'package:fitpulse/src/common_widgets/custom_elevated_button.dart';
 import 'package:fitpulse/src/common_widgets/section_header.dart';
@@ -14,24 +15,10 @@ class CustomExerciseResult extends StatefulWidget {
 }
 
 class _CustomExerciseResultState extends State<CustomExerciseResult> {
-  List<Map<String, String>> exercises = [
-    {
-      "title": "Flat Stomach Workout",
-      "time": "30 Minutes",
-      "calories": "200 Calories",
-      "image": "assets/images/flatstomach.png"
-    },
-    {
-      "title": "Dumbell Workout",
-      "time": "30 Minutes",
-      "calories": "200 Calories",
-      "image": "assets/images/dumbellworkout.png"
-    },
-  ];
 
   void _deleteExercise(int index) {
     setState(() {
-      exercises.removeAt(index);
+      customexercises.removeAt(index);
     });
   }
 
@@ -54,7 +41,7 @@ class _CustomExerciseResultState extends State<CustomExerciseResult> {
               isSubtitle: false,
             ),
             const SizedBox(height: 10),
-            for (int i = 0; i < exercises.length; i++) ...[
+            for (int i = 0; i < customexercises.length; i++) ...[
               Row(
                 children: [
                   IconButton(
@@ -64,10 +51,10 @@ class _CustomExerciseResultState extends State<CustomExerciseResult> {
                   ),
                   Expanded(
                     child: ExerciseCard(
-                      title: exercises[i]['title']!,
-                      time: exercises[i]['time']!,
-                      calories: exercises[i]['calories']!,
-                      imageAsset: exercises[i]['image']!,
+                      title: customexercises[i]['title']!,
+                      time: customexercises[i]['time']!,
+                      calories: customexercises[i]['calories']!,
+                      imageAsset: customexercises[i]['image']!,
                       screen: const ExerciseDetail(),
                     ),
                   ),

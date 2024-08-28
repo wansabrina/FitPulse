@@ -1,3 +1,4 @@
+import 'package:fitpulse/src/constants/exercises_data.dart';
 import 'package:fitpulse/src/features/activities/activities_screen.dart';
 import 'package:fitpulse/src/features/activities/widget/exercise_card.dart';
 import 'package:fitpulse/src/features/activities/custom_exercise_screen.dart';
@@ -18,39 +19,6 @@ class ExerciseScreen extends StatefulWidget {
 
 class _ExerciseScreenState extends State<ExerciseScreen> {
   final TextEditingController _searchController = TextEditingController();
-
-  List<Map<String, String>> exercises = [
-    {
-      "title": "Flat Stomach Workout",
-      "time": "30 Minutes",
-      "calories": "200 Calories",
-      "image": "assets/images/flatstomach.png"
-    },
-    {
-      "title": "Warming Up",
-      "time": "30 Minutes",
-      "calories": "200 Calories",
-      "image": "assets/images/warmingup.png"
-    },
-    {
-      "title": "Walking Workout",
-      "time": "30 Minutes",
-      "calories": "200 Calories",
-      "image": "assets/images/wakingworkout.png"
-    },
-    {
-      "title": "Lean Arm Workout",
-      "time": "30 Minutes",
-      "calories": "200 Calories",
-      "image": "assets/images/leanarmworkout.png"
-    },
-    {
-      "title": "Dumbell Workout",
-      "time": "30 Minutes",
-      "calories": "200 Calories",
-      "image": "assets/images/dumbellworkout.png"
-    },
-  ];
 
   @override
   Widget build(BuildContext context) {

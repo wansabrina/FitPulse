@@ -2,7 +2,7 @@ import 'package:fitpulse/src/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomOutlinedButton extends StatelessWidget {
-  final VoidCallback? onPressed; // Masih menggunakan VoidCallback
+  final VoidCallback? onPressed;
   final String text;
   final double height;
   final double width;

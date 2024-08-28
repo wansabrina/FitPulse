@@ -30,20 +30,14 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       _selectedIndex = index;
     });
 
-    switch (index) {
-      case 0:
-        _fadeToScreen(context, HomeScreen());
-        break;
-      case 1:
-        _fadeToScreen(context, const ActivitiesScreen());
-        break;
-      case 2:
-        _fadeToScreen(context, const NutritionsScreen());
-        break;
-      case 3:
-        _fadeToScreen(context, const ProfileScreen());
-        break;
-    }
+    final screens = [
+      HomeScreen(),
+      const ActivitiesScreen(),
+      const NutritionsScreen(),
+      const ProfileScreen(),
+    ];
+
+    _fadeToScreen(context, screens[index]);
   }
 
   void _fadeToScreen(BuildContext context, Widget screen) {
@@ -61,6 +55,30 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     ));
   }
 
+  BottomNavigationBarItem _buildNavItem(IconData icon, String label, bool isActive) {
+    return BottomNavigationBarItem(
+      icon: Padding(
+        padding: EdgeInsets.only(top: isActive ? 5.0 : 12.0),
+        child: Icon(icon),
+      ),
+      activeIcon: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 6.0),
+            child: Icon(icon),
+          ),
+          const SizedBox(height: 5),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 10, color: blue500),
+          ),
+        ],
+      ),
+      label: '',
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -72,91 +90,11 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       selectedFontSize: 12,
       unselectedFontSize: 10,
       onTap: _onItemTapped,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Padding(
-            padding: EdgeInsets.only(top: 8.0),
-            child: Icon(Icons.home),
-          ),
-          activeIcon: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 5.0),
-                child: Icon(Icons.home),
-              ),
-              SizedBox(height: 5),
-              Text(
-                'Home',
-                style: TextStyle(fontSize: 10, color: blue500),
-              ),
-            ],
-          ),
-          label: '',
-        ),
-        BottomNavigationBarItem(
-          icon: Padding(
-            padding: EdgeInsets.only(top: 12.0),
-            child: Icon(Icons.bar_chart),
-          ),
-          activeIcon: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 6.0),
-                child: Icon(Icons.bar_chart),
-              ),
-              SizedBox(height: 5),
-              Text(
-                'Activities',
-                style: TextStyle(fontSize: 10, color: blue500),
-              ),
-            ],
-          ),
-          label: '',
-        ),
-        BottomNavigationBarItem(
-          icon: Padding(
-            padding: EdgeInsets.only(top: 12.0),
-            child: Icon(Icons.fastfood),
-          ),
-          activeIcon: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 6.0),
-                child: Icon(Icons.fastfood),
-              ),
-              SizedBox(height: 5),
-              Text(
-                'Meals',
-                style: TextStyle(fontSize: 10, color: blue500),
-              ),
-            ],
-          ),
-          label: '',
-        ),
-        BottomNavigationBarItem(
-          icon: Padding(
-            padding: EdgeInsets.only(top: 12.0),
-            child: Icon(Icons.person),
-          ),
-          activeIcon: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 6.0),
-                child: Icon(Icons.person),
-              ),
-              SizedBox(height: 5),
-              Text(
-                'Profile',
-                style: TextStyle(fontSize: 10, color: blue500),
-              ),
-            ],
-          ),
-          label: '',
-        ),
+      items: [
+        _buildNavItem(Icons.home, 'Home', _selectedIndex == 0),
+        _buildNavItem(Icons.bar_chart, 'Activities', _selectedIndex == 1),
+        _buildNavItem(Icons.fastfood, 'Meals', _selectedIndex == 2),
+        _buildNavItem(Icons.person, 'Profile', _selectedIndex == 3),
       ],
     );
   }
