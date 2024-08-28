@@ -6,7 +6,7 @@ FitPulse is your go-to fitness app designed to seamlessly track your daily activ
 
 ## 🎥 Demo
 
-![4p9p4o](https://github.com/user-attachments/assets/7f6d46ac-4a0c-4895-9474-71d6d96c4e54)
+https://github.com/user-attachments/assets/7f6d46ac-4a0c-4895-9474-71d6d96c4e54
 
 ## 🚀 Features
 
