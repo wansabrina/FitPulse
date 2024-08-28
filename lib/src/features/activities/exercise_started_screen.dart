@@ -1,5 +1,6 @@
+import 'package:fitpulse/src/common_widgets/custom_appbar.dart';
 import 'package:fitpulse/src/constants/colors.dart';
-import 'package:fitpulse/src/features/activities/exercise_list_card.dart';
+import 'package:fitpulse/src/features/activities/widget/exercise_list_card.dart';
 import 'package:flutter/material.dart';
 
 class ExerciseStarted extends StatefulWidget {
@@ -20,30 +21,18 @@ class _ExerciseStartedState extends State<ExerciseStarted> {
     {'title': 'Exercise 5', 'time': '05.30 Minutes'},
   ];
 
-  final String imagePath = 'assets/images/flatstomach.png';
+  final String imagePath = 'assets/images/animation.gif';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text(
-          'Exercises',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
+      appBar: const CustomAppBar(
+        title: 'Exercise',
+        iconColor: Colors.black,
+        textColor: Colors.black,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
+        padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 5),
         child: Column(
           children: [
             Row(
@@ -56,7 +45,7 @@ class _ExerciseStartedState extends State<ExerciseStarted> {
                       'Exercise',
                       style: TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     Text(
@@ -73,7 +62,7 @@ class _ExerciseStartedState extends State<ExerciseStarted> {
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.blue,
+                          color: blue500,
                         ),
                       ),
                       const TextSpan(
@@ -112,7 +101,6 @@ class _ExerciseStartedState extends State<ExerciseStarted> {
                     ),
                   ),
                 ),
-              
                 Positioned(
                   bottom: 1.1,
                   child: Container(
@@ -126,8 +114,8 @@ class _ExerciseStartedState extends State<ExerciseStarted> {
                       child: const LinearProgressIndicator(
                         value: 0.3,
                         backgroundColor: Colors.transparent,
-                        color: Colors.blue,
-                        minHeight: 15,
+                        color: blue500,
+                        minHeight: 13,
                       ),
                     ),
                   ),
@@ -135,7 +123,6 @@ class _ExerciseStartedState extends State<ExerciseStarted> {
               ],
             ),
             const SizedBox(height: 20),
-
             Expanded(
               child: ListView(
                 children: [
@@ -151,45 +138,41 @@ class _ExerciseStartedState extends State<ExerciseStarted> {
           ],
         ),
       ),
-
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(bottom: 20.0, top: 10.0, left: 100.0, right: 100.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              FloatingActionButton(
-                onPressed: () {
-                
-                },
-                backgroundColor: Colors.blue[300],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: const Icon(Icons.fast_rewind, size: 30, color: Colors.white),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(
+            bottom: 20.0, top: 10.0, left: 100.0, right: 100.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            FloatingActionButton(
+              onPressed: () {},
+              backgroundColor: blue300,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
               ),
-              FloatingActionButton(
-                onPressed: () {
-                
-                },
-                backgroundColor: Colors.blue[300],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: const Icon(Icons.pause, size: 30, color: Colors.white),
+              child:
+                  const Icon(Icons.fast_rewind, size: 30, color: Colors.white),
+            ),
+            FloatingActionButton(
+              onPressed: () {},
+              backgroundColor: blue300,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
               ),
-              FloatingActionButton(
-                onPressed: () {
-                
-                },
-                backgroundColor: Colors.blue[300],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: const Icon(Icons.fast_forward, size: 30, color: Colors.white),
+              child: const Icon(Icons.pause, size: 30, color: Colors.white),
+            ),
+            FloatingActionButton(
+              onPressed: () {},
+              backgroundColor: blue300,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
               ),
-            ],
-          ),
+              child:
+                  const Icon(Icons.fast_forward, size: 30, color: Colors.white),
+            ),
+          ],
         ),
+      ),
     );
   }
 }

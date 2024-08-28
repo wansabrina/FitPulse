@@ -30,10 +30,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  fl_chart: ^0.40.0
+  fl_chart: ^0.69.0
   custom_sliding_segmented_control: ^1.8.1
   cupertino_icons: ^1.0.6
   iconify_flutter: ^0.0.5
+  graphic: ^2.4.0
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -91,6 +93,28 @@ flutter:
     - assets/images/scallions.png
     - assets/images/chicken.png
     - assets/images/buburayam.png
+    - assets/images/bubur.png
+    - assets/images/cucumber.png
+    - assets/images/friedchicken.png
+    - assets/images/mushroompizza.png
+    - assets/images/nasipadang.png
+    - assets/images/rice.png
+    - assets/images/sambal.png
+    - assets/images/selada.png
+    - assets/images/spaghetti.png
+    - assets/images/tempe.png
+    - assets/images/ayamgeprek.png
+    - assets/images/bronze.png
+    - assets/images/silver.png
+    - assets/images/gold.png
+    - assets/images/Logo.png
+    - assets/images/whitelogo.png
+    - assets/images/bluelogo.png
+    - assets/images/animation.gif
+    - assets/images/onboarding1.gif
+    - assets/images/onboarding2.gif
+    - assets/images/onboarding3.gif
+    - assets/images/meditation.gif
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

@@ -1,9 +1,13 @@
 import 'package:fitpulse/src/common_widgets/custom_appbar.dart';
+import 'package:fitpulse/src/features/nutritions/widget/nutrition_breakdown.dart';
 import 'package:fitpulse/src/constants/colors.dart';
+import 'package:fitpulse/src/features/nutritions/nutritions_screen.dart';
 import 'package:flutter/material.dart';
 
 class MealPlanDetail extends StatefulWidget {
-  const MealPlanDetail({super.key});
+  final Map<String, dynamic> mealData;
+
+  const MealPlanDetail({super.key, required this.mealData});
 
   @override
   _MealPlanDetailState createState() => _MealPlanDetailState();
@@ -15,45 +19,6 @@ class _MealPlanDetailState extends State<MealPlanDetail> {
   double collapsedHeight = 450;
   double expandedHeight = 650;
 
-  final List<Map<String, dynamic>> mealItems = [
-    {
-      'image': 'assets/images/porridge.png',
-      'name': 'Rice Porridge',
-      'details': '200g',
-      'calories': '150 kcal',
-    },
-    {
-      'image': 'assets/images/egg.png',
-      'name': 'Boiled Egg',
-      'details': '1 pcs',
-      'calories': '70 kcal',
-    },
-    {
-      'image': 'assets/images/chicken.png',
-      'name': 'Shredded Chicken',
-      'details': '50g',
-      'calories': '60 kcal',
-    },
-    {
-      'image': 'assets/images/shallots.png',
-      'name': 'Fried Shallots',
-      'details': '10g',
-      'calories': '20 kcal',
-    },
-    {
-      'image': 'assets/images/scallions.png',
-      'name': 'Scallions',
-      'details': '5g',
-      'calories': '1 kcal',
-    },
-    {
-      'image': 'assets/images/soy.png',
-      'name': 'Soy Sauce',
-      'details': '5ml',
-      'calories': '4 kcal',
-    },
-  ];
-
   void _toggleExpandCollapse() {
     setState(() {
       isExpanded = !isExpanded;
@@ -62,29 +27,31 @@ class _MealPlanDetailState extends State<MealPlanDetail> {
 
   @override
   Widget build(BuildContext context) {
+    final mealData = widget.mealData;
+    final List<Map<String, dynamic>> mealItems = mealData['composition'];
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: const CustomAppBar(
         title: '',
-        iconColor: Colors.white,
-        textColor: Colors.white,
+        iconColor: Colors.black,
+        textColor: Colors.black,
+        navigateToScreen: NutritionsScreen(),
       ),
       body: Stack(
         alignment: Alignment.topCenter,
         children: [
-          // Background image
           Positioned(
             top: 0,
             left: 0,
             right: 0,
             child: Image.asset(
-              'assets/images/buburayam.png',
+              mealData['image'],
               fit: BoxFit.cover,
               height: 500,
             ),
           ),
-
           AnimatedPositioned(
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
@@ -98,7 +65,8 @@ class _MealPlanDetailState extends State<MealPlanDetail> {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
-                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 20.0),
                 height: isExpanded ? expandedHeight : collapsedHeight,
                 decoration: const BoxDecoration(
                   color: Colors.white,
@@ -128,7 +96,6 @@ class _MealPlanDetailState extends State<MealPlanDetail> {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    // Meal details
                     Row(
                       children: [
                         Icon(
@@ -136,9 +103,9 @@ class _MealPlanDetailState extends State<MealPlanDetail> {
                           color: Colors.blue[500],
                         ),
                         const SizedBox(width: 5),
-                        const Text(
-                          '295.2 kcal',
-                          style: TextStyle(
+                        Text(
+                          mealData['calories'],
+                          style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
                             color: Colors.black,
@@ -146,28 +113,20 @@ class _MealPlanDetailState extends State<MealPlanDetail> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 10),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Carbohydrate: 11.83g'),
-                        Text('Fat: 0.35g'),
-                        Text('Protein: 0.35g'),
-                        Text('Fibre: 1.97g'),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 15),
+                    const NutritionBreakdown(),
+                    const SizedBox(height: 15),
                     const Text(
-                      'Breakfast',
+                      "Meal Name",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     const SizedBox(height: 5),
-                    const Text(
-                      'Bubur Tidak Diaduk',
-                      style: TextStyle(
+                    Text(
+                      mealData['name'],
+                      style: const TextStyle(
                         color: neutral400,
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
@@ -176,7 +135,8 @@ class _MealPlanDetailState extends State<MealPlanDetail> {
                     const SizedBox(height: 15),
                     const Text(
                       'Meal Composition',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                     ),
                     Expanded(
                       child: SingleChildScrollView(
@@ -186,20 +146,19 @@ class _MealPlanDetailState extends State<MealPlanDetail> {
                               children: [
                                 ListTile(
                                   leading: Image.asset(
-                                    item['image'],
+                                    item['imagePath'],
                                     width: 50,
-                                    height: 50,
-                                    fit: BoxFit.cover,
+                                    height: 40,
+                                    fit: BoxFit.fitHeight,
                                   ),
                                   title: Text(item['name']),
                                   subtitle: Text(
-                                    '${item['details']} • ${item['calories']}',
+                                    '${item['amount']} • ${item['calories']}',
                                     style: const TextStyle(
                                       color: neutral400,
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 5),
                               ],
                             );
                           }).toList(),

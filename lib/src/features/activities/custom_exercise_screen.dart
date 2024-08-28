@@ -70,6 +70,7 @@ class _CustomExerciseState extends State<CustomExercise> {
                 ],
               ),
             ),
+
             Expanded(
               child: Stack(
                 alignment: Alignment.center,
@@ -118,6 +119,7 @@ class _CustomExerciseState extends State<CustomExercise> {
               ),
             ),
             const SizedBox(height: 20),
+            
             CustomElevatedButton(
               onPressed: isAnyBodyPartSelected ? _onFindExercise : null,
               text: "Find Exercise",

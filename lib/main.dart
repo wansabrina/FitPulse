@@ -1,4 +1,6 @@
-import 'package:fitpulse/src/features/nutritions_screen.dart';
+import 'package:fitpulse/src/features/nutritions/nutritions_screen.dart';
+import 'package:fitpulse/src/features/splash_screen.dart';
+import 'package:fitpulse/src/features/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fitpulse/src/features/home_screen.dart';
 import 'package:fitpulse/src/features/activities/activities_screen.dart';
@@ -14,12 +16,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      theme: ThemeData(
+        fontFamily: 'Poppins'
+      ),
+      initialRoute: '/splash',
       routes: {
+        '/splash': (context) => const SplashScreen(),
         '/home': (context) => HomeScreen(),
         '/activities': (context) => const ActivitiesScreen(),
         '/meal': (context) => const NutritionsScreen(),
-        '/profile': (context) => const ActivitiesScreen(),
+        '/profile': (context) => const ProfileScreen(),
       },
     );
   }

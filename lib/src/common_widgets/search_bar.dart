@@ -6,10 +6,10 @@ class CustomSearchBar extends StatelessWidget {
   final String placeholder;
 
   const CustomSearchBar({
-    Key? key,
+    super.key,
     required this.controller,
     this.placeholder = "Search...",
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CustomSearchBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
-          Icon(Icons.search, color: Colors.grey),
+          const Icon(Icons.search, color: Colors.grey),
           const SizedBox(width: 10),
           Expanded(
             child: TextField(

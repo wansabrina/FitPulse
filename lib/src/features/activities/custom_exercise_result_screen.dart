@@ -1,8 +1,9 @@
-import 'package:fitpulse/src/common_widgets/activities/exercise_card.dart';
+import 'package:fitpulse/src/features/activities/widget/exercise_card.dart';
 import 'package:fitpulse/src/common_widgets/custom_elevated_button.dart';
 import 'package:fitpulse/src/common_widgets/section_header.dart';
 import 'package:fitpulse/src/common_widgets/custom_appbar.dart';
 import 'package:fitpulse/src/features/activities/exercise_detail_screen.dart';
+import 'package:fitpulse/src/features/activities/exercise_started_screen.dart';
 import 'package:flutter/material.dart';
 
 class CustomExerciseResult extends StatefulWidget {
@@ -13,10 +14,19 @@ class CustomExerciseResult extends StatefulWidget {
 }
 
 class _CustomExerciseResultState extends State<CustomExerciseResult> {
-
   List<Map<String, String>> exercises = [
-    {"title": "Flat Stomach Workout", "time": "30 Minutes", "calories": "200 Calories", "image": "assets/images/flatstomach.png"},
-    {"title": "Dumbell Workout", "time": "30 Minutes", "calories": "200 Calories", "image": "assets/images/dumbellworkout.png"},
+    {
+      "title": "Flat Stomach Workout",
+      "time": "30 Minutes",
+      "calories": "200 Calories",
+      "image": "assets/images/flatstomach.png"
+    },
+    {
+      "title": "Dumbell Workout",
+      "time": "30 Minutes",
+      "calories": "200 Calories",
+      "image": "assets/images/dumbellworkout.png"
+    },
   ];
 
   void _deleteExercise(int index) {
@@ -44,7 +54,6 @@ class _CustomExerciseResultState extends State<CustomExerciseResult> {
               isSubtitle: false,
             ),
             const SizedBox(height: 10),
-
             for (int i = 0; i < exercises.length; i++) ...[
               Row(
                 children: [
@@ -53,20 +62,19 @@ class _CustomExerciseResultState extends State<CustomExerciseResult> {
                     padding: EdgeInsets.zero,
                     icon: const Icon(Icons.remove_circle, color: Colors.red),
                   ),
-
                   Expanded(
                     child: ExerciseCard(
                       title: exercises[i]['title']!,
                       time: exercises[i]['time']!,
                       calories: exercises[i]['calories']!,
                       imageAsset: exercises[i]['image']!,
+                      screen: const ExerciseDetail(),
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 10),
             ],
-
             Align(
               alignment: Alignment.centerRight,
               child: CustomElevatedButton(
@@ -80,7 +88,7 @@ class _CustomExerciseResultState extends State<CustomExerciseResult> {
                 },
                 text: "Add Exercise",
                 height: 35.0,
-                width: 170,
+                width: 180,
                 icon: Icons.add_outlined,
                 iconSize: 22,
               ),
@@ -88,7 +96,6 @@ class _CustomExerciseResultState extends State<CustomExerciseResult> {
           ],
         ),
       ),
-
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(20.0),
         child: CustomElevatedButton(
@@ -96,7 +103,7 @@ class _CustomExerciseResultState extends State<CustomExerciseResult> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const ExerciseDetail(),
+                builder: (context) => const ExerciseStarted(),
               ),
             );
           },

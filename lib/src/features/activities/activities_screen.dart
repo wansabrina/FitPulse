@@ -1,6 +1,8 @@
-import 'package:fitpulse/src/common_widgets/activities/activity_card.dart';
-import 'package:fitpulse/src/common_widgets/activities/exercise_card.dart';
+import 'package:fitpulse/src/features/activities/widget/activity_card.dart';
+import 'package:fitpulse/src/features/activities/widget/exercise_card.dart';
+import 'package:fitpulse/src/features/activities/widget/exercise_summary_card.dart';
 import 'package:fitpulse/src/common_widgets/section_header.dart';
+import 'package:fitpulse/src/features/activities/exercise_detail_screen.dart';
 import 'package:fitpulse/src/features/activities/exercise_screen.dart';
 import 'package:fitpulse/src/features/activities/steps_detail_screen.dart';
 import 'package:flutter/material.dart';
@@ -34,13 +36,12 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
               'Today Activities',
               style: TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
                 color: Colors.black,
               ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-
             CalendarComponent(
               selectedDay: selectedDay,
               onDaySelected: (day) {
@@ -50,55 +51,19 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
               },
             ),
             const SizedBox(height: 16),
-
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 8,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Today's Exercise Summary",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 8),
-                  Row(
-                    children: [
-                      Icon(Icons.timer, color: Colors.blue),
-                      SizedBox(width: 8),
-                      Text('2 Hours'),
-                      Spacer(),
-                      Icon(Icons.local_fire_department, color: Colors.blue),
-                      SizedBox(width: 8),
-                      Text('800 Kcal'),
-                    ],
-                  ),
-                  SizedBox(height: 16),
-                  SizedBox(
-                    height: 100,
-                    child: Placeholder(),
-                  ),
-                ],
-              ),
-            ),
+            const ExerciseSummaryCard(),
             const SizedBox(height: 16),
-            const SectionHeader(title: "Continue Progress", isSubtitle: true, navigateTo: ExerciseScreen()),
+            const SectionHeader(
+                title: "Continue Progress",
+                isSubtitle: true,
+                navigateTo: ExerciseScreen()),
             const SizedBox(height: 10),
             const ExerciseCard(
               title: "Flat Stomach Workout",
               time: "30 Minutes",
               calories: "200 Calories",
               imageAsset: "assets/images/flatstomach.png",
+              screen: ExerciseDetail(),
             ),
             const SizedBox(height: 16),
             const Row(
@@ -107,14 +72,18 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                 ActivityCard(
                   icon: Icons.directions_walk,
                   label: "Steps",
-                  value: "700 Steps",
+                  value: "700",
+                  unit: "Steps",
+                  chartType: "bar",
                   navigateTo: StepsDetailScreen(),
                 ),
                 SizedBox(width: 10),
                 ActivityCard(
                   icon: Icons.nights_stay,
                   label: "Sleep",
-                  value: "8 Hours",
+                  value: "8",
+                  unit: "Hours",
+                  chartType: "line",
                   navigateTo: StepsDetailScreen(),
                 ),
               ],
@@ -124,20 +93,25 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ActivityCard(
-                  icon: Icons.directions_walk,
-                  label: "Steps",
-                  value: "700 Steps",
+                  icon: Icons.local_fire_department,
+                  label: "Calories",
+                  value: "15",
+                  unit: "kkal",
+                  chartType: "bar",
                   navigateTo: StepsDetailScreen(),
                 ),
                 SizedBox(width: 10),
                 ActivityCard(
-                  icon: Icons.nights_stay,
-                  label: "Sleep",
-                  value: "8 Hours",
+                  icon: Icons.monitor_heart_outlined,
+                  label: "Heart",
+                  value: "95",
+                  unit: "bpm",
+                  chartType: "line",
                   navigateTo: StepsDetailScreen(),
                 ),
               ],
             ),
+            const SizedBox(height: 16),
           ],
         ),
       ),

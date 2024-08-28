@@ -13,7 +13,7 @@ class CustomTabs extends StatelessWidget {
   final Curve curve;
 
   const CustomTabs({
-    Key? key,
+    super.key,
     this.initialValue = 2,
     required this.labels,
     required this.onValueChanged,
@@ -22,7 +22,7 @@ class CustomTabs extends StatelessWidget {
     this.thumbDecoration,
     required this.containerHeight,
     this.curve = Curves.easeInToLinear,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

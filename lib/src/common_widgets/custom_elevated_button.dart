@@ -10,14 +10,14 @@ class CustomElevatedButton extends StatelessWidget {
   final double iconSize;
 
   const CustomElevatedButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.text,
     this.height = 50.0,
     this.width = double.infinity,
     this.icon,
     this.iconSize = 24.0,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

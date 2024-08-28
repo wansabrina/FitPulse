@@ -22,8 +22,8 @@ class ExerciseList extends StatelessWidget {
           imagePath,
           height: 40,
         ),
-        title: Text(exerciseName),
-        subtitle: Text(duration, style: TextStyle(color: neutral500)),
+        title: Text(exerciseName, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+        subtitle: Text(duration, style: TextStyle(fontSize: 13, color: neutral500)),
         trailing: Container(
           decoration: const BoxDecoration(
             color: neutral200,

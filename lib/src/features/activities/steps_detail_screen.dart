@@ -1,6 +1,8 @@
-import 'package:fitpulse/src/common_widgets/activities/activities_info_card.dart';
+import 'package:fitpulse/src/features/activities/widget/activities_info_card.dart';
+import 'package:fitpulse/src/features/activities/widget/calories_burn_card.dart';
 import 'package:fitpulse/src/common_widgets/section_header.dart';
 import 'package:fitpulse/src/common_widgets/custom_appbar.dart';
+import 'package:fitpulse/src/features/activities/widget/steps_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:fitpulse/src/common_widgets/bottom_bar.dart';
 import 'package:fitpulse/src/common_widgets/custom_tabs.dart';
@@ -18,20 +20,19 @@ class _StepsDetailScreenState extends State<StepsDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: const CustomAppBar(
         title: 'Daily Steps',
         iconColor: Colors.black,
         textColor: Colors.black,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 100.0),
+        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
         child: Column(
           children: [
             CustomTabs(
               initialValue: selectedTab,
               containerHeight: 35.0,
-              labels: {
+              labels: const {
                 0: 'Day',
                 1: 'Weeks',
                 2: 'Month',
@@ -49,140 +50,88 @@ class _StepsDetailScreenState extends State<StepsDetailScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(currentIndex: 1),
+      bottomNavigationBar: const CustomBottomNavigationBar(currentIndex: 1),
     );
   }
 
   Widget _buildDayTab() {
     return Column(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                offset: const Offset(0, 2),
-                blurRadius: 4,
-              ),
-            ],
-          ),
-          padding: const EdgeInsets.all(15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Total',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-              const Text(
-                '10.000 Steps',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Container(
-                height: 200,
-                color: Colors.grey[300],
-                // Add your graph widget here in the future
-              ),
-            ],
-          ),
+        const StepsTotal(
+          chartType: ChartType.day,
+          totalSteps: 700,
+          stepsData: [0, 400, 100, 100, 150, 50, 50],
         ),
         const SizedBox(height: 16),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                offset: const Offset(0, 2),
-                blurRadius: 4,
-              ),
-            ],
-          ),
-          padding: const EdgeInsets.all(15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'For 10.000 Steps, you burn:',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-              const SizedBox(height: 5),
-              const Text(
-                '1500 Kcal',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Container(
-                height: 100,
-                color: Colors.grey[300],
-              ),
-            ],
-          ),
-        ),
+        const CaloriesBurnedCard(),
         const SizedBox(height: 16),
         const SectionHeader(title: "Other Activities"),
         const SizedBox(height: 10),
-        const ActivitiesInfoCard(
-          title: 'Sleep',
-          number: 8,
-          unit: "Hours",
-          icon: Icons.wb_sunny_outlined,
-        ),
-        const SizedBox(height: 10),
-        const ActivitiesInfoCard(
-          title: 'Sleep',
-          number: 8,
-          unit: "Hours",
-          icon: Icons.wb_sunny_outlined,
-        ),
-        const SizedBox(height: 10),
-        const ActivitiesInfoCard(
-          title: 'Sleep',
-          number: 8,
-          unit: "Hours",
-          icon: Icons.wb_sunny_outlined,
-        ),
-        const SizedBox(height: 10),
+        _buildOtherActivities(),
       ],
     );
   }
 
   Widget _buildWeeksTab() {
     return Column(
-      children: const [
-        Text('Weekly Steps View', style: TextStyle(fontSize: 24)),
-        SizedBox(height: 20),
-        // Add your graph or steps details here
+      children: [
+        const StepsTotal(
+          chartType: ChartType.week,
+          totalSteps: 10000,
+          stepsData: [2000, 4000, 1800, 4500, 3000, 2500, 1000],
+        ),
+        const SizedBox(height: 16),
+        const CaloriesBurnedCard(),
+        const SizedBox(height: 16),
+        const SectionHeader(title: "Other Activities"),
+        const SizedBox(height: 10),
+        _buildOtherActivities(),
       ],
     );
   }
 
   Widget _buildMonthTab() {
     return Column(
-      children: const [
-        Text('Monthly Steps View', style: TextStyle(fontSize: 24)),
-        SizedBox(height: 20),
-        // Add your graph or steps details here
+      children: [
+        const StepsTotal(
+          chartType: ChartType.month,
+          totalSteps: 30000,
+          stepsData: [3900, 5000, 2000, 5500, 4000, 6000, 3000, 6200],
+        ),
+        const SizedBox(height: 16),
+        const CaloriesBurnedCard(),
+        const SizedBox(height: 16),
+        const SectionHeader(title: "Other Activities"),
+        const SizedBox(height: 10),
+        _buildOtherActivities(),
+      ],
+    );
+  }
+
+  Widget _buildOtherActivities() {
+    return const Column(
+      children: [
+        ActivitiesInfoCard(
+          title: 'Sleep',
+          number: 8,
+          unit: "Hours",
+          icon: Icons.nights_stay,
+        ),
+        SizedBox(height: 10),
+        ActivitiesInfoCard(
+          title: 'Heart',
+          number: 150,
+          unit: "kkal",
+          icon: Icons.local_fire_department,
+        ),
+        SizedBox(height: 10),
+        ActivitiesInfoCard(
+          title: 'Heart',
+          number: 95,
+          unit: "bpm",
+          icon: Icons.monitor_heart_outlined,
+        ),
+        SizedBox(height: 10),
       ],
     );
   }

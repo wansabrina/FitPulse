@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class CustomFilterButton extends StatelessWidget {
 
   const CustomFilterButton({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

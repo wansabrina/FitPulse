@@ -1,10 +1,11 @@
-import 'package:fitpulse/src/common_widgets/activities/exercise_card.dart';
+import 'package:fitpulse/src/features/activities/widget/exercise_card.dart';
 import 'package:fitpulse/src/features/activities/custom_exercise_screen.dart';
 import 'package:fitpulse/src/common_widgets/filter_button.dart';
 import 'package:fitpulse/src/common_widgets/search_bar.dart';
 import 'package:fitpulse/src/common_widgets/section_header.dart';
-import 'package:fitpulse/src/common_widgets/activities/exercise_category_card.dart';
+import 'package:fitpulse/src/features/activities/widget/exercise_category_card.dart';
 import 'package:fitpulse/src/common_widgets/custom_appbar.dart';
+import 'package:fitpulse/src/features/activities/exercise_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class ExerciseScreen extends StatefulWidget {
@@ -18,18 +19,43 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
   final TextEditingController _searchController = TextEditingController();
 
   List<Map<String, String>> exercises = [
-    {"title": "Flat Stomach Workout", "time": "30 Minutes", "calories": "200 Calories", "image": "assets/images/flatstomach.png"},
-    {"title": "Warming Up", "time": "30 Minutes", "calories": "200 Calories", "image": "assets/images/warmingup.png"},
-    {"title": "Walking Workout", "time": "30 Minutes", "calories": "200 Calories", "image": "assets/images/wakingworkout.png"},
-    {"title": "Lean Arm Workout", "time": "30 Minutes", "calories": "200 Calories", "image": "assets/images/leanarmworkout.png"},
-    {"title": "Dumbell Workout", "time": "30 Minutes", "calories": "200 Calories", "image": "assets/images/dumbellworkout.png"},
+    {
+      "title": "Flat Stomach Workout",
+      "time": "30 Minutes",
+      "calories": "200 Calories",
+      "image": "assets/images/flatstomach.png"
+    },
+    {
+      "title": "Warming Up",
+      "time": "30 Minutes",
+      "calories": "200 Calories",
+      "image": "assets/images/warmingup.png"
+    },
+    {
+      "title": "Walking Workout",
+      "time": "30 Minutes",
+      "calories": "200 Calories",
+      "image": "assets/images/wakingworkout.png"
+    },
+    {
+      "title": "Lean Arm Workout",
+      "time": "30 Minutes",
+      "calories": "200 Calories",
+      "image": "assets/images/leanarmworkout.png"
+    },
+    {
+      "title": "Dumbell Workout",
+      "time": "30 Minutes",
+      "calories": "200 Calories",
+      "image": "assets/images/dumbellworkout.png"
+    },
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: CustomAppBar(
+      appBar: const CustomAppBar(
         title: 'Exercise',
         iconColor: Colors.black,
         textColor: Colors.black,
@@ -43,7 +69,10 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                 children: [
                   Expanded(
                     flex: 5,
-                    child: CustomSearchBar(controller: _searchController, placeholder: "Search Exercise",),
+                    child: CustomSearchBar(
+                      controller: _searchController,
+                      placeholder: "Search Exercise",
+                    ),
                   ),
                   const SizedBox(width: 10),
                   const Expanded(
@@ -57,11 +86,20 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
               const SizedBox(height: 10),
               const Row(
                 children: [
-                  ExerciseCategoryCard(title: "Workout", imagePath: "assets/images/Workouttt.png", navigateTo: CustomExercise()),
+                  ExerciseCategoryCard(
+                      title: "Workout",
+                      imagePath: "assets/images/Workouttt.png",
+                      navigateTo: CustomExercise()),
                   SizedBox(width: 12),
-                  ExerciseCategoryCard(title: "Yoga", imagePath: "assets/images/Yoga.png", navigateTo: CustomExercise()),
+                  ExerciseCategoryCard(
+                      title: "Yoga",
+                      imagePath: "assets/images/Yoga.png",
+                      navigateTo: CustomExercise()),
                   SizedBox(width: 12),
-                  ExerciseCategoryCard(title: "Custom", isCustomButton: true, navigateTo: CustomExercise()),
+                  ExerciseCategoryCard(
+                      title: "Custom",
+                      isCustomButton: true,
+                      navigateTo: CustomExercise()),
                 ],
               ),
               const SizedBox(height: 20),
@@ -76,6 +114,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                         time: exercise["time"]!,
                         calories: exercise["calories"]!,
                         imageAsset: exercise["image"]!,
+                        screen: const ExerciseDetail(),
                       ),
                       const SizedBox(height: 10),
                     ],
@@ -83,8 +122,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                 }).toList(),
               )
             ],
-          )
-      ),
+          )),
     );
   }
 }

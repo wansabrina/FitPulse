@@ -1,7 +1,7 @@
 import 'package:fitpulse/src/common_widgets/custom_appbar.dart';
 import 'package:fitpulse/src/common_widgets/custom_elevated_button.dart';
 import 'package:fitpulse/src/constants/colors.dart';
-import 'package:fitpulse/src/features/activities/exercise_list_card.dart';
+import 'package:fitpulse/src/features/activities/widget/exercise_list_card.dart';
 import 'package:fitpulse/src/features/activities/exercise_started_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -33,10 +33,9 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
         iconColor: Colors.black,
         textColor: Colors.black,
       ),
-      body:Stack(
+      body: Stack(
         alignment: Alignment.topCenter,
         children: [
-        
           Positioned(
             top: 0,
             left: 0,
@@ -47,8 +46,6 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
               height: 300,
             ),
           ),
-
-        
           Positioned(
             top: 100,
             child: IconButton(
@@ -57,13 +54,9 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                 size: 70,
                 color: Colors.white,
               ),
-              onPressed: () {
-              
-              },
+              onPressed: () {},
             ),
           ),
-
-        
           AnimatedPositioned(
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
@@ -97,7 +90,6 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                  
                     Center(
                       child: Container(
                         width: 100,
@@ -126,7 +118,8 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                     const Text(
                       'Flat Stomach Workout',
                       style: TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     const SizedBox(height: 5),
@@ -134,19 +127,17 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                       'Warm up properly before exercising to prevent injury and make your workouts more effective.',
                       style: TextStyle(
                         color: Colors.black54,
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
                     const SizedBox(height: 15),
-
-                  
                     const Text(
                       'Exercises',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(height: 7),
-
                     Expanded(
                       child: ListView(
                         children: [

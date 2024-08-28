@@ -1,6 +1,8 @@
+import 'package:fitpulse/src/constants/colors.dart';
 import 'package:fitpulse/src/features/activities/activities_screen.dart';
 import 'package:fitpulse/src/features/home_screen.dart';
-import 'package:fitpulse/src/features/nutritions_screen.dart';
+import 'package:fitpulse/src/features/nutritions/nutritions_screen.dart';
+import 'package:fitpulse/src/features/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
@@ -39,7 +41,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         _fadeToScreen(context, const NutritionsScreen());
         break;
       case 3:
-        _fadeToScreen(context, const ActivitiesScreen());
+        _fadeToScreen(context, const ProfileScreen());
         break;
     }
   }
@@ -64,7 +66,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       currentIndex: _selectedIndex,
-      selectedItemColor: Colors.blue[500],
+      selectedItemColor: blue500,
       unselectedItemColor: Colors.black,
       iconSize: 24,
       selectedFontSize: 12,
@@ -86,7 +88,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               SizedBox(height: 5),
               Text(
                 'Home',
-                style: TextStyle(fontSize: 12, color: Colors.blue),
+                style: TextStyle(fontSize: 10, color: blue500),
               ),
             ],
           ),
@@ -95,19 +97,19 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         BottomNavigationBarItem(
           icon: Padding(
             padding: EdgeInsets.only(top: 12.0),
-            child: Icon(Icons.fitness_center),
+            child: Icon(Icons.bar_chart),
           ),
           activeIcon: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: EdgeInsets.only(top: 6.0),
-                child: Icon(Icons.fitness_center),
+                child: Icon(Icons.bar_chart),
               ),
               SizedBox(height: 5),
               Text(
                 'Activities',
-                style: TextStyle(fontSize: 12, color: Colors.blue),
+                style: TextStyle(fontSize: 10, color: blue500),
               ),
             ],
           ),
@@ -128,7 +130,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               SizedBox(height: 5),
               Text(
                 'Meals',
-                style: TextStyle(fontSize: 12, color: Colors.blue),
+                style: TextStyle(fontSize: 10, color: blue500),
               ),
             ],
           ),
@@ -149,7 +151,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               SizedBox(height: 5),
               Text(
                 'Profile',
-                style: TextStyle(fontSize: 12, color: Colors.blue),
+                style: TextStyle(fontSize: 10, color: blue500),
               ),
             ],
           ),

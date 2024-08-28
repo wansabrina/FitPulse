@@ -23,9 +23,9 @@ class CalendarComponent extends StatelessWidget {
               onDaySelected(dates[index]);
             },
             child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 21),
+              padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 18),
               decoration: BoxDecoration(
-                color: isSelected ? blue500 : neutral100,
+                color: isSelected ? blue500 : neutral200,
                 borderRadius: BorderRadius.circular(13),
                 boxShadow: [
                   BoxShadow(
@@ -43,15 +43,16 @@ class CalendarComponent extends StatelessWidget {
                     style: TextStyle(
                       color: isSelected ? Colors.white : neutral500,
                       fontWeight: FontWeight.w500,
+                      fontSize: 14,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 2),
                   Text(
                     dates[index].toString(),
                     style: TextStyle(
                       color: isSelected ? Colors.white : black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
