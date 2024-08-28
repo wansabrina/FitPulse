@@ -32,5 +32,6 @@ To get started with FitPulse, follow these steps:
     ```
 
 ## 🖼️ Design
+View the the wireframes and prototypes [here](https://www.figma.com/design/lQHMf58b11xeb46Agq2WqF/FitPulse?node-id=80-3764&t=xk2PU7fXGEKrmt45-0).
 
-FitPulse’s design is inspired by simplicity, clean aesthetics, and user-centric functionality. The onboarding screens guide new users through the app's core functionalities while keeping them motivated and focused on their fitness journey.
+
