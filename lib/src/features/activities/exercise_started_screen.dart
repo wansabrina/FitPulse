@@ -1,5 +1,6 @@
 import 'package:fitpulse/src/common_widgets/custom_appbar.dart';
 import 'package:fitpulse/src/constants/colors.dart';
+import 'package:fitpulse/src/features/activities/exercise_screen.dart';
 import 'package:fitpulse/src/features/activities/widget/exercise_list_card.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +31,7 @@ class _ExerciseStartedState extends State<ExerciseStarted> {
         title: 'Exercise',
         iconColor: Colors.black,
         textColor: Colors.black,
+        navigateToScreen: ExerciseScreen(),
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 5),

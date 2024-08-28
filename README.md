@@ -4,6 +4,10 @@
 
 FitPulse is your go-to fitness app designed to seamlessly track your daily activities, monitor your nutrition, and guide you toward your fitness goals. Whether you are a beginner or a seasoned athlete, FitPulse is tailored to help you stay on track and achieve your healthiest self.
 
+## 🎥 Demo
+
+![4p9p4o](https://github.com/user-attachments/assets/7f6d46ac-4a0c-4895-9474-71d6d96c4e54)
+
 ## 🚀 Features
 
 - 🧘 **Track your Activity**: Monitor your daily exercise, steps, and other health stats with ease.
@@ -32,6 +36,4 @@ To get started with FitPulse, follow these steps:
     ```
 
 ## 🖼️ Design
-View the the wireframes and prototypes [here](https://www.figma.com/design/lQHMf58b11xeb46Agq2WqF/FitPulse?node-id=80-3764&t=xk2PU7fXGEKrmt45-0).
-
-
+View the wireframes and prototypes [here](https://www.figma.com/design/lQHMf58b11xeb46Agq2WqF/FitPulse?node-id=80-3764&t=xk2PU7fXGEKrmt45-0).

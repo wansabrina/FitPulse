@@ -1,3 +1,4 @@
+import 'package:fitpulse/src/features/activities/activities_screen.dart';
 import 'package:fitpulse/src/features/activities/widget/exercise_card.dart';
 import 'package:fitpulse/src/features/activities/custom_exercise_screen.dart';
 import 'package:fitpulse/src/common_widgets/filter_button.dart';
@@ -59,6 +60,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
         title: 'Exercise',
         iconColor: Colors.black,
         textColor: Colors.black,
+        navigateToScreen: ActivitiesScreen(),
       ),
       body: SingleChildScrollView(
           padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 90.0),
